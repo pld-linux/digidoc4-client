@@ -17,6 +17,9 @@ BuildRequires:	Qt5UiTools-devel
 BuildRequires:	cmake >= 3.0
 BuildRequires:	libdigidocpp-devel >= 3.13.8
 BuildRequires:	pcsc-lite-devel
+Requires(post,postun):	gtk-update-icon-cache
+Requires(post,postun):	hicolor-icon-theme
+Requires:	hicolor-icon-theme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,6 +47,23 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+%update_icon_cache hicolor
+
+%postun
+%update_icon_cache hicolor
+
 %files
 %defattr(644,root,root,755)
 %doc README.md RELEASE-NOTES.md
+%attr(755,root,root) %{_bindir}/qdigidoc4
+%{_mandir}/man1/qdigidoc4.1*
+%{_desktopdir}/qdigidoc4.desktop
+%{_iconsdir}/hicolor/*/apps/qdigidoc4.png
+%{_iconsdir}/hicolor/*/mimetypes/application-vnd.etsi.asic-e+zip.png
+%{_iconsdir}/hicolor/*/mimetypes/application-vnd.etsi.asic-s+zip.png
+%{_iconsdir}/hicolor/*/mimetypes/application-vnd.lt.archyvai.adoc-2008.png
+%{_iconsdir}/hicolor/*/mimetypes/application-x-cdoc.png
+%{_iconsdir}/hicolor/*/mimetypes/application-x-ddoc.png
+%{_iconsdir}/hicolor/*/mimetypes/application-x-p12d.png
+%{_datadir}/mime/packages/qdigidoc4.xml
