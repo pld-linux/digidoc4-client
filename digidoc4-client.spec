@@ -17,7 +17,6 @@ Patch0:		cmake.patch
 Patch1:		LibDigiDocpp-required.patch
 URL:		https://github.com/open-eid/DigiDoc4-Client
 BuildRequires:	Qt5Core-devel
-BuildRequires:	Qt5LinguistTools-devel
 BuildRequires:	Qt5Network-devel
 BuildRequires:	Qt5PrintSupport-devel
 BuildRequires:	Qt5ScriptTools-devel
@@ -28,6 +27,7 @@ BuildRequires:	Qt5Widgets-devel
 BuildRequires:	cmake >= 3.5
 BuildRequires:	libdigidocpp-devel >= 3.13.8
 BuildRequires:	pcsc-lite-devel
+BuildRequires:	qt5-linguist
 BuildRequires:	rpmbuild(macros) >= 1.596
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
