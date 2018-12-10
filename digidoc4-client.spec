@@ -17,9 +17,11 @@ BuildRequires:	Qt5UiTools-devel
 BuildRequires:	cmake >= 3.0
 BuildRequires:	libdigidocpp-devel >= 3.13.8
 BuildRequires:	pcsc-lite-devel
+BuildRequires:	rpmbuild(macros) >= 1.596
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
 Requires:	hicolor-icon-theme
+Requires:	shared-mime-info
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -49,9 +51,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %update_icon_cache hicolor
+%update_mime_database
 
 %postun
 %update_icon_cache hicolor
+%update_mime_database
 
 %files
 %defattr(644,root,root,755)
