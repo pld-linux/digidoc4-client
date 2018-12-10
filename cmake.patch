@@ -1,0 +1,17 @@
+https://github.com/open-eid/DigiDoc4-Client/issues/407
+
+--- digidoc4-client-4.2.0.43/cmake/modules/VersionInfo.cmake	2018-11-29 16:48:25.000000000 +0200
++++ DigiDoc4-Client/cmake/modules/VersionInfo.cmake	2018-12-10 10:54:15.962704711 +0200
+@@ -1,9 +1,9 @@
+ if( $ENV{BUILD_NUMBER} )
+-	set( BUILD_VER #{ENV["BUILD_NUMBER"]} )
++	set( BUILD_VER $ENV{BUILD_NUMBER} )
+ elseif(PROJECT_VERSION_TWEAK)
+-	set( BUILD_VER #{ENV["BUILD_NUMBER"]} )
++	set( BUILD_VER ${PROJECT_VERSION_TWEAK} )
+ else()
+-	set( BUILD_VER #{ENV["BUILD_NUMBER"]} )
++	set( BUILD_VER 0 )
+ endif()
+ if(NOT BUILD_DATE)
+ 	string(TIMESTAMP BUILD_DATE "%d.%m.%Y")
