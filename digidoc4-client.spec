@@ -9,6 +9,7 @@ Group:		X11/Applications
 Source0:	https://github.com/open-eid/DigiDoc4-Client/releases/download/v4.2.0/qdigidoc4_%{version}.orig.tar.xz
 # Source0-md5:	69008db6002270e981b0685e4330511c
 Patch0:		cmake.patch
+Patch1:		LibDigiDocpp-required.patch
 URL:		https://github.com/open-eid/DigiDoc4-Client
 BuildRequires:	Qt5ScriptTools-devel
 BuildRequires:	Qt5Svg-devel
@@ -26,6 +27,7 @@ ID-card - change pin codes, update certificates etc.
 %prep
 %setup -qc
 %patch0 -p1
+%patch1 -p1
 
 %build
 install -d build

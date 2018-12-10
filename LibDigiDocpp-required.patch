@@ -1,0 +1,13 @@
+https://github.com/open-eid/DigiDoc4-Client/pull/409
+
+--- digidoc4-client-4.2.0.43/CMakeLists.txt~	2018-11-29 16:48:25.000000000 +0200
++++ digidoc4-client-4.2.0.43/CMakeLists.txt	2018-12-10 22:16:09.691434806 +0200
+@@ -15,7 +15,7 @@
+ include( VersionInfo )
+ 
+ find_package( PKCS11 )
+-find_package( LibDigiDocpp REQUIRED )
++find_package( LibDigiDocpp 3.13.8 REQUIRED)
+ find_package( Qt5 COMPONENTS Core Widgets Network PrintSupport Svg LinguistTools REQUIRED )
+ find_library( AWP_MODULE NAMES libOcsCryptoki.dylib PATHS /Library/AWP/lib /usr/local/AWP/lib )
+ include_directories( ${LIBDIGIDOCPP_INCLUDE_DIR} )
