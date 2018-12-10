@@ -14,7 +14,7 @@ BuildRequires:	Qt5ScriptTools-devel
 BuildRequires:	Qt5Svg-devel
 BuildRequires:	Qt5UiTools-devel
 BuildRequires:	cmake >= 3.0
-BuildRequires:	libdigidocpp-devel
+BuildRequires:	libdigidocpp-devel >= 3.13.8
 BuildRequires:	pcsc-lite-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
