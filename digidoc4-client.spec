@@ -1,5 +1,10 @@
 # TODO
 # - obsolete qesteidutil?
+#
+# Conditional build:
+%bcond_without	kde			# Install KDE service menu
+%bcond_without	nautilus	# Build Nautilus extension
+
 Summary:	DigiDoc4 Client
 Name:		digidoc4-client
 Version:	4.2.0.43
@@ -29,6 +34,22 @@ DigiDoc4 Client is an application for digitally signing and encrypting
 documents; the software includes functionality to manage Estonian
 ID-card - change pin codes, update certificates etc.
 
+%package kde
+Summary:	KDE service menu
+Group:		X11/Applications
+BuildArch:	noarch
+
+%description kde
+KDE service menu.
+
+%package -n nautilus-extension-%{name}
+Summary:	Nautilus extension
+Group:		X11/Applications
+BuildArch:	noarch
+
+%description -n nautilus-extension-%{name}
+Nautilus extension.
+
 %prep
 %setup -qc
 %patch0 -p1
@@ -38,6 +59,8 @@ ID-card - change pin codes, update certificates etc.
 install -d build
 cd build
 %cmake \
+	-DENABLE_KDE=%{!?with_kde:OFF}%{?with_kde:ON} \
+	-DENABLE_NAUTILUS_EXTENSION=%{!?with_nautilus:OFF}%{?with_nautilus:ON} \
 	..
 %{__make}
 
@@ -45,6 +68,10 @@ cd build
 rm -rf $RPM_BUILD_ROOT
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%if %{with nautilus}
+%find_lang nautilus-qdigidoc
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -71,3 +98,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/mimetypes/application-x-ddoc.png
 %{_iconsdir}/hicolor/*/mimetypes/application-x-p12d.png
 %{_datadir}/mime/packages/qdigidoc4.xml
+
+%if %{with kde}
+%files kde
+%defattr(644,root,root,755)
+%{_datadir}/kde4/services/qdigidoc-signer.desktop
+%endif
+
+%if %{with nautilus}
+%files -n nautilus-extension-%{name} -f nautilus-qdigidoc.lang
+%defattr(644,root,root,755)
+%{_datadir}/nautilus-python/extensions/nautilus-qdigidoc.py
+%endif
