@@ -27,7 +27,9 @@ BuildRequires:	Qt5Widgets-devel
 BuildRequires:	cmake >= 3.5
 BuildRequires:	libdigidocpp-devel >= 3.13.8
 BuildRequires:	pcsc-lite-devel
+BuildRequires:	qt5-build
 BuildRequires:	qt5-linguist
+BuildRequires:	qt5-qmake
 BuildRequires:	rpmbuild(macros) >= 1.596
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
