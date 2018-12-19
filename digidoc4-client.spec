@@ -26,6 +26,7 @@ BuildRequires:	Qt5UiTools-devel
 BuildRequires:	Qt5Widgets-devel
 BuildRequires:	cmake >= 3.5
 BuildRequires:	libdigidocpp-devel >= 3.13.8
+BuildRequires:	openldap-devel
 BuildRequires:	pcsc-lite-devel
 BuildRequires:	qt5-build
 BuildRequires:	qt5-linguist
